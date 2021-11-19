@@ -1,55 +1,74 @@
 # Front view pinhole projection
-$(arg camera_name)_pinhole_front:
+#$(arg camera_name)_pinhole_front:
+pinhole_front:
   update_rate: 10
   always_recompute_mapping: false
-  base_frame: $(arg camera_name)_center_link
-  pose: [0, 0, 0, 0, 0.4, 0]
+  base_frame: base_link #$(arg camera_name)_link
+  pose: [0, 0, 0, 0, 0, 0]
   virtual_sensor_frame: pinhole_front_camera_frame
   virtual_sensor_optical_frame: pinhole_front_optical_frame
   projection_type: image_projection_plugins::PinholeProjection
   projection_parameters:
-    image_width: 1024
-    image_height: 512
+    image_width: 960 #1024
+    image_height: 240 #512
     horizontal_fov: 130
     focal_length: 1
 
 # Mercator projection
-$(arg camera_name)_mercator_projection:
+#$(arg camera_name)_mercator_projection:
+mercator_projection:
   update_rate: 10
-  base_frame: $(arg camera_name)_center_link
+  base_frame: base_link #$(arg camera_name)_link
   pose: [0, 0, 0, 0, 0, 3.141592]
   projection_type: image_projection_plugins::MercatorProjection
   projection_parameters:
-    image_width: 1024
-    image_height: 512
+    image_width: 1024 #960 #1024
+    image_height: 512 #240 #512
     cylinder_radius: 1.0
     vertical_fov: 110
   
 # Ideal fisheye
-$(arg camera_name)_left_fisheye:
+#$(arg camera_name)_left:
+left_fisheye:
   update_rate: 10
   always_recompute_mapping: false
-  base_frame: $(arg camera_name)_center_link
+  base_frame: base_link #$(arg camera_name)_link
   pose: [0, 0, 0, 0, 0, 1.57]
-  virtual_sensor_frame: camera360_ideal_fisheye_left_link
-  virtual_sensor_optical_frame: camera360_ideal_fisheye_left_optical_frame
-  projection_type: image_projection_plugins::IdealFisheyeProjection
+  virtual_sensor_frame: left_fisheye_link #camera360_ideal_fisheye_left_link
+  virtual_sensor_optical_frame: left_fisheye_optical_frame #camera360_ideal_fisheye_left_optical_frame
+  projection_type: image_projection_plugins::PinholeProjection #image_projection_plugins::IdealFisheyeProjection
   projection_parameters:
-    image_width: &fisheye_resolution 512
-    image_height: *fisheye_resolution
-    fov: &fisheye_fov 180
-    sphere_radius: &fisheye_sphere_radius 1
+    image_width: 320 #&fisheye_resolution 512
+    image_height: 240 #*fisheye_resolution
+    hfov: 3.1415 #&fisheye_fov 180
+    #sphere_radius: &fisheye_sphere_radius 1
 
-$(arg camera_name)_right_fisheye:
+#$(arg camera_name)_right:
+right_fisheye:
   update_rate: 10
   always_recompute_mapping: false
-  base_frame: $(arg camera_name)_center_link
+  base_frame: base_link #$(arg camera_name)_link
   pose: [0, 0, 0, 0, 0, -1.57]
-  virtual_sensor_frame: camera360_ideal_fisheye_right_link
-  virtual_sensor_optical_frame: camera360_ideal_fisheye_right_optical_frame
-  projection_type: image_projection_plugins::IdealFisheyeProjection
+  virtual_sensor_frame: right_fisheye_link #camera360_ideal_fisheye_right_link
+  virtual_sensor_optical_frame: right_fisheye_optical_frame #camera360_ideal_fisheye_right_optical_frame
+  projection_type: image_projection_plugins::PinholeProjection #image_projection_plugins::IdealFisheyeProjection
   projection_parameters:
-    image_width: *fisheye_resolution
-    image_height: *fisheye_resolution
-    fov: *fisheye_fov
-    sphere_radius: *fisheye_sphere_radius
+    image_width: 320 #&fisheye_resolution 512
+    image_height: 240 #*fisheye_resolution
+    hfov: 3.1415 #&fisheye_fov 180
+    #sphere_radius: &fisheye_sphere_radius 1
+
+#$(arg camera_name)_front:
+#center:
+#  update_rate: 10
+#  always_recompute_mapping: false
+#  base_frame: base_link #$(arg camera_name)_link
+#  pose: [0, 0, 0, 0, 0, -1.57]
+#  virtual_sensor_frame: front_link #camera360_ideal_fisheye_right_link
+#  virtual_sensor_optical_frame: front_optical_frame #camera360_ideal_fisheye_right_optical_frame
+#  projection_type: image_projection_plugins::PinholeProjection #image_projection_plugins::IdealFisheyeProjection
+#  projection_parameters:
+#    image_width: 320 #&fisheye_resolution 512
+#    image_height: 240 #*fisheye_resolution
+#    hfov: 3.1415 #&fisheye_fov 180
+    #sphere_radius: &fisheye_sphere_radius 1

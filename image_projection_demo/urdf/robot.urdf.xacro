@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find image_projection_demo)/urdf/generic_camera.urdf.xacro"/>  
+  
+  <link name="base_link"/>
+  
+  <xacro:generic_camera name="left" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${pi}">
+    <origin xyz="0 0.42 0" rpy="0.0 0 0"/> <!-- base_frame to camera mount transform -->
+    <!-- cam to cam transform (calibration by kalibr) -->
+    <!--origin xyz="0.002862424041614364  -0.00013127655875068252 -0.03724378451297336" rpy="-3.1402707 0.0036289 -3.1175768"/-->
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="center" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${pi}">
+    <origin xyz="0 0.0 0" rpy="0.0 0 0"/> <!-- base_frame to camera mount transform -->
+    <!-- cam to cam transform (calibration by kalibr) -->
+    <!--origin xyz="0.002862424041614364  -0.00013127655875068252 -0.03724378451297336" rpy="-3.1402707 0.0036289 -3.1175768"/-->
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="right" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${pi}">
+    <origin xyz="0 -0.42 0" rpy="0.0 0 0"/> <!-- base_frame to camera mount transform -->
+    <!-- cam to cam transform (calibration by kalibr) -->
+    <!--origin xyz="0.002862424041614364  -0.00013127655875068252 -0.03724378451297336" rpy="-3.1402707 0.0036289 -3.1175768"/-->
+  </xacro:generic_camera>
+
+</robot>

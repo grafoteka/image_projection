@@ -1,0 +1,15 @@
+# Used cameras for the projection
+cameras:
+  - '/left'
+  - '/right'
+
+# Topic setup
+/camera360:
+    left:
+      image_topic: image_raw
+      camera_info_topic: camera_info_not_used
+      extended_camera_info_topic: extended_camera_info
+    right:
+      image_topic: image_raw
+      camera_info_topic: camera_info_not_used
+      extended_camera_info_topic: extended_camera_info
