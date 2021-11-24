@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find image_projection_demo)/urdf/generic_camera.urdf.xacro"/>  
+  
+  <xacro:property name="x_resolution" value="320" />
+  <xacro:property name="y_resolution" value="240" />
+  <xacro:property name="horizontal_fov" value="55" />
+  <xacro:property name="y_separation" value="0.1" />
+  <xacro:property name="yaw_rotation" value="${45*M_PI/180}" />
+
+  <xacro:property name="separation" value="0.1" />
+
+
+  <link name="base_link"/>
+  
+  <!--xacro:generic_camera name="left" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="0 ${y_separation} 0" rpy="0.0 0 ${yaw_rotation}"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="center" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="0 0.0 0" rpy="0.0 0 0"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="right" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="0 -${y_separation} 0" rpy="0.0 0 -${yaw_rotation}"/> 
+  </xacro:generic_camera-->
+
+  <xacro:generic_camera name="fc" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="${separation/2} 0 0" rpy="0.0 0 0"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="fl" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="${separation/4} ${separation/4} 0" rpy="0.0 0 ${yaw_rotation}"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="fr" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="${separation/4} -${separation/4} 0" rpy="0.0 0 -${yaw_rotation}"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="rc" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="-${separation/2} 0 0" rpy="0.0 0 ${M_PI}"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="rl" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="-${separation/4} ${separation/4} 0" rpy="0.0 0 ${M_PI-yaw_rotation}"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="rr" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="-${separation/4} -${separation/4} 0" rpy="0.0 0 ${-M_PI+yaw_rotation}"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="l" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="0 ${separation/2} 0" rpy="0.0 0 ${M_PI/2}"/> 
+  </xacro:generic_camera>
+
+  <xacro:generic_camera name="r" parent="base_link" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="320" res_y="240" image_format="R8G8B8" hfov="${horizontal_fov}">
+    <origin xyz="0 -${separation/2} 0" rpy="0.0 0 ${-M_PI/2}"/> 
+  </xacro:generic_camera>
+
+</robot>

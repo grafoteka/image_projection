@@ -1,0 +1,47 @@
+# Used cameras for the projection
+cameras:
+  #- '/left'
+  #- '/right'
+  #- '/center'
+  - '/fc'
+  - '/fl'
+  - '/fr'
+  - '/rc'
+  - '/rl'
+  - '/rr'
+  - '/l'
+  - '/r'
+
+# Topic setup
+fc:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
+fl:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
+fr:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
+rc:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
+rl:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
+rr:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
+l:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
+r:
+  image_topic: image_raw
+  camera_info_topic: camera_info
+  extended_camera_info_topic: extended_camera_info_not_used
